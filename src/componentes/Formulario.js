@@ -3,6 +3,8 @@ import './Formulario.css';
 import { Form, Input, Button, Cascader, Avatar, DatePicker, Select } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
+import Adver from './Adver';
+
 
 
 const { Option } = Select;
@@ -96,6 +98,13 @@ const tailLayout = {
 
 const Formulario = () => {
 
+  const modalRef = React.useRef();
+
+  const openModal = () => {
+    modalRef.current.openModal()
+  };
+
+
   const onFinish = values => {
     console.log('Success:', values);
   };
@@ -176,8 +185,11 @@ const Formulario = () => {
                     </Form.Item>
                 </div>
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                    <Button className="boton" htmlType="submit">
+                    <Button onClick={openModal} className="boton" htmlType="submit">
                         Enviar
+                        <Adver ref={modalRef}>
+                          
+                        </Adver>
                     </Button>
                     <Button className="boton2" htmlType="submit">
                         Cancelar
